@@ -1,0 +1,236 @@
+.database-container {
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  .database-card {
+    max-width: 1400px;
+    margin: 0 auto;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+    padding: 24px;
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(63, 81, 181, 0.2);
+  }
+  
+  .header-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    color: #3f51b5;
+  }
+  
+  .header-text mat-card-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  
+  .header-text mat-card-subtitle {
+    font-size: 14px;
+    opacity: 0.7;
+  }
+  
+  .search-section {
+    margin-bottom: 32px;
+    padding: 24px;
+    background: linear-gradient(135deg, rgba(63, 81, 181, 0.05), rgba(83, 109, 254, 0.05));
+    border-radius: 12px;
+  }
+  
+  .search-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .search-field {
+    width: 100%;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+  
+  .button-group button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    font-weight: 500;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+    border-radius: 8px;
+  }
+  
+  .players-table {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .header-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  
+  .header-cell mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.7;
+  }
+  
+  .cell-content {
+    font-size: 14px;
+  }
+  
+  .position-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+  }
+  
+  .position-goalkeeper {
+    background-color: #a07e0e;
+    color: #fff;
+  }
+  
+  .position-defender {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  .position-midfielder {
+    background-color: #2196f3;
+    color: #fff;
+  }
+  
+  .position-forward {
+    background-color: #f44336;
+    color: #fff;
+  }
+  
+  .table-row {
+    transition: background-color 0.2s ease;
+  }
+  
+  .table-row:hover {
+    background-color: rgba(63, 81, 181, 0.05);
+  }
+  
+  .no-data {
+    text-align: center;
+    padding: 60px 20px;
+  }
+  
+  .no-data mat-icon {
+    font-size: 72px;
+    width: 72px;
+    height: 72px;
+    opacity: 0.3;
+    margin-bottom: 16px;
+  }
+  
+  .no-data h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .no-data p {
+    font-size: 14px;
+    opacity: 0.7;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .database-container {
+      padding: 10px;
+    }
+  
+    .database-card {
+      padding: 16px;
+    }
+  
+    .card-header {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .search-section {
+      padding: 16px;
+    }
+  
+    .search-fields {
+      grid-template-columns: 1fr;
+    }
+  
+    .button-group {
+      flex-direction: column;
+    }
+  
+    .button-group button {
+      width: 100%;
+    }
+  
+    .header-cell {
+      font-size: 12px;
+    }
+  
+    .cell-content {
+      font-size: 13px;
+    }
+  }
+
+.mat-icon {
+    vertical-align: middle;
+  }
+  
+  .retired-column {
+    width: 80px;
+    text-align: center;
+  }
+  
+  .retired-icon {
+    color: #4caf50;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+  
+  .sortable-header {
+    cursor: pointer;
+    user-select: none;
+  }
+  
+  .sortable-header mat-icon {
+    vertical-align: middle;
+    font-size: 18px;
+    margin-left: 4px;
+  }

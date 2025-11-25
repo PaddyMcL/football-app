@@ -1,1 +1,273 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.light-mode .mat-mdc-card {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.light-mode .mat-mdc-table {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.light-mode .mat-mdc-header-cell {
+  color: #000000;
+}
+
+body.light-mode .mat-mdc-cell {
+  color: #000000;
+}
+
+body.light-mode .mat-mdc-form-field {
+  color: #000000;
+}
+
+body.light-mode .mat-mdc-input-element {
+  color: #000000;
+}
+
+body.light-mode .no-data {
+  color: #666666;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .mat-mdc-card {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark-mode .mat-mdc-table {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+body.dark-mode .mat-mdc-header-cell {
+  color: #ffffff;
+  background-color: #2a2a2a;
+}
+
+body.dark-mode .mat-mdc-cell {
+  color: #ffffff;
+}
+
+body.dark-mode .mat-mdc-form-field {
+  color: #ffffff;
+}
+
+body.dark-mode .mat-mdc-input-element {
+  color: #ffffff;
+  caret-color: #ffffff;
+}
+
+body.dark-mode .mat-mdc-form-field-label {
+  color: #b0b0b0 !important;
+}
+
+body.dark-mode .mat-mdc-outlined-button {
+  color: #ffffff;
+}
+
+body.dark-mode .no-data {
+  color: #b0b0b0;
+}
+
+body.dark-mode .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+body.dark-mode .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+body.dark-mode .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+body.dark-mode .mat-mdc-row:hover {
+  background-color: #2a2a2a;
+}
+
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.theme-toggle button {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle button:hover {
+  transform: scale(1.1);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+body.light-mode ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode .mat-mdc-input-element,
+body.dark-mode .mat-mdc-form-field-label,
+body.dark-mode .mat-mdc-select-value-text {
+  color: #ffffff !important;
+  caret-color: #ffffff !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+body.dark-mode .mat-toolbar,
+body.dark-mode .mat-toolbar span,
+body.dark-mode .mat-toolbar a,
+body.dark-mode .mat-toolbar mat-icon {
+  color: #ffffff !important;
+}
+
+body.dark-mode .mat-mdc-header-cell,
+body.dark-mode .mat-mdc-cell {
+  color: #ffffff !important;
+}
+
+body.dark-mode .search-section label,
+body.dark-mode .search-section mat-label {
+  color: #ffffff !important;
+}
+
+body.dark-mode .form-card label,
+body.dark-mode .form-card mat-label {
+  color: #ffffff !important;
+}
+
+body.dark-mode .mat-mdc-header-cell .mat-mdc-table-sort-header-arrow {
+  color: #ffffff !important;
+}
+
+body.dark-mode .hero-subtitle,
+body.dark-mode .page-subtitle,
+body.dark-mode .sub-title,
+body.dark-mode .subtitle,
+body.dark-mode p.subtitle,
+body.dark-mode p.sub-text,
+body.dark-mode .sub-text,
+body.dark-mode mat-card-subtitle,
+body.dark-mode .mat-mdc-card-subtitle,
+body.dark-mode .mat-mdc-subtitle {
+  color: #ffffff !important;
+}
+
+.home-container,
+.database-container,
+.form-container,
+* {
+  scrollbar-width: thin;
+  scrollbar-color: auto;
+}
+
+.home-container::-webkit-scrollbar,
+.database-container::-webkit-scrollbar,
+.form-container::-webkit-scrollbar,
+*:not(textarea)::-webkit-scrollbar {
+  width: 10px;
+}
+
+body.light-mode .home-container::-webkit-scrollbar-track,
+body.light-mode .database-container::-webkit-scrollbar-track,
+body.light-mode .form-container::-webkit-scrollbar-track,
+body.light-mode *:not(textarea)::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+body.light-mode .home-container::-webkit-scrollbar-thumb,
+body.light-mode .database-container::-webkit-scrollbar-thumb,
+body.light-mode .form-container::-webkit-scrollbar-thumb,
+body.light-mode *:not(textarea)::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+body.light-mode .home-container::-webkit-scrollbar-thumb:hover,
+body.light-mode .database-container::-webkit-scrollbar-thumb:hover,
+body.light-mode .form-container::-webkit-scrollbar-thumb:hover,
+body.light-mode *:not(textarea)::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+body.dark-mode .home-container::-webkit-scrollbar-track,
+body.dark-mode .database-container::-webkit-scrollbar-track,
+body.dark-mode .form-container::-webkit-scrollbar-track,
+body.dark-mode *:not(textarea)::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+body.dark-mode .home-container::-webkit-scrollbar-thumb,
+body.dark-mode .database-container::-webkit-scrollbar-thumb,
+body.dark-mode .form-container::-webkit-scrollbar-thumb,
+body.dark-mode *:not(textarea)::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
+
+body.dark-mode .home-container::-webkit-scrollbar-thumb:hover,
+body.dark-mode .database-container::-webkit-scrollbar-thumb:hover,
+body.dark-mode .form-container::-webkit-scrollbar-thumb:hover,
+body.dark-mode *:not(textarea)::-webkit-scrollbar-thumb:hover {
+  background: #ddd;
+}
+
+.position-retired-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .position-field {
+    flex: 1;
+  }
+  
+  .retired-checkbox {
+    margin-top: 0;
+  }  

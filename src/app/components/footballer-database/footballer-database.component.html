@@ -1,0 +1,167 @@
+<div class="database-container">
+    <mat-card class="database-card">
+      <mat-card-header class="card-header">
+        <mat-icon class="header-icon">people</mat-icon>
+        <div class="header-text">
+          <mat-card-title>Player Database</mat-card-title>
+          <mat-card-subtitle>Manage and search your football players</mat-card-subtitle>
+        </div>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <div class="search-section">
+          <div class="search-fields">
+            <mat-form-field appearance="outline" class="search-field">
+              <mat-label>Search by Name</mat-label>
+              <mat-icon matPrefix>search</mat-icon>
+              <input matInput [(ngModel)]="searchName" placeholder="Player name">
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline" class="search-field">
+              <mat-label>Search by Team</mat-label>
+              <mat-icon matPrefix>shield</mat-icon>
+              <input matInput [(ngModel)]="searchTeam" placeholder="Team name">
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline" class="search-field">
+              <mat-label>Search by Nationality</mat-label>
+              <mat-icon matPrefix>flag</mat-icon>
+              <input matInput [(ngModel)]="searchNationality" placeholder="Nationality">
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline" class="search-field">
+              <mat-label>Search by Position</mat-label>
+              <mat-icon matPrefix>sports</mat-icon>
+              <mat-select [(value)]="searchPosition">
+                <mat-option value="">Any Position</mat-option>
+                <mat-option *ngFor="let pos of positions" [value]="pos">{{ pos }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+  
+            <mat-form-field appearance="outline" class="search-field">
+              <mat-label>Status</mat-label>
+              <mat-select [(value)]="searchRetired">
+                <mat-option value="">All Players</mat-option>
+                <mat-option value="false">Current Players</mat-option>
+                <mat-option value="true">Retired Players</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+  
+          <div class="button-group">
+            <button mat-raised-button color="primary" (click)="searchFootballers()">
+              <mat-icon>search</mat-icon> Search
+            </button>
+            <button mat-raised-button (click)="clearSearch()">
+              <mat-icon>refresh</mat-icon> Reset
+            </button>
+          </div>
+        </div>
+  
+        <div class="table-container">
+          <table mat-table [dataSource]="filteredFootballers" class="players-table mat-elevation-z4">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>
+                <div class="header-cell">
+                  <mat-icon>person</mat-icon> Name
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let footballer">{{ footballer.name }}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="age">
+              <th mat-header-cell *matHeaderCellDef (click)="sortColumn('age')" class="sortable-header">
+                <div class="header-cell">
+                  <mat-icon>cake</mat-icon> Age
+                  <mat-icon *ngIf="isSortedAsc('age')">arrow_upward</mat-icon>
+                  <mat-icon *ngIf="isSortedDesc('age')">arrow_downward</mat-icon>
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let footballer">{{ footballer.age }}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef>
+                <div class="header-cell">
+                  <mat-icon>sports</mat-icon> Position
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let footballer">
+                <span class="position-badge" [class]="'position-' + footballer.position.toLowerCase()">
+                  {{ footballer.position }}
+                </span>
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="team">
+              <th mat-header-cell *matHeaderCellDef (click)="sortColumn('team')" class="sortable-header">
+                <div class="header-cell">
+                  <mat-icon>shield</mat-icon> Team
+                  <mat-icon *ngIf="isSortedAsc('team')">arrow_upward</mat-icon>
+                  <mat-icon *ngIf="isSortedDesc('team')">arrow_downward</mat-icon>
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let footballer">{{ footballer.team }}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="nationality">
+              <th mat-header-cell *matHeaderCellDef (click)="sortColumn('nationality')" class="sortable-header">
+                <div class="header-cell">
+                  <mat-icon>flag</mat-icon> Nationality
+                  <mat-icon *ngIf="isSortedAsc('nationality')">arrow_upward</mat-icon>
+                  <mat-icon *ngIf="isSortedDesc('nationality')">arrow_downward</mat-icon>
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let footballer">{{ footballer.nationality || 'N/A' }}</td>
+            </ng-container>
+  
+            <ng-container matColumnDef="retired">
+              <th mat-header-cell *matHeaderCellDef class="retired-column">
+                <div class="header-cell">
+                  <mat-icon>check_circle</mat-icon> Retired
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let footballer" class="retired-column">
+                <mat-icon *ngIf="footballer.retired" class="retired-icon">check_circle</mat-icon>
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="edit">
+              <th mat-header-cell *matHeaderCellDef>
+                <div class="header-cell">
+                  <mat-icon>edit</mat-icon> Edit
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let footballer">
+                <button mat-icon-button color="accent" [routerLink]="['/edit', footballer._id]" matTooltip="Edit Player">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>
+                <div class="header-cell">
+                  <mat-icon>settings</mat-icon> Actions
+                </div>
+              </th>
+              <td mat-cell *matCellDef="let footballer">
+                <button mat-icon-button color="warn" (click)="deleteFootballer(footballer._id)" matTooltip="Delete Player">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+  
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
+          </table>
+  
+          <div *ngIf="filteredFootballers.length === 0" class="no-data">
+            <mat-icon>search_off</mat-icon>
+            <h3>No players found</h3>
+            <p>Try adjusting your search criteria or add a new player</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>  

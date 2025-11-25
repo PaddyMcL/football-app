@@ -1,0 +1,71 @@
+<div class="form-container" *ngIf="footballerForm">
+    <mat-card class="form-card">
+      <mat-card-header class="card-header">
+        <mat-icon class="header-icon">edit</mat-icon>
+        <mat-card-title>Edit Player</mat-card-title>
+        <mat-card-subtitle>Update footballer information</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="footballerForm" (ngSubmit)="onSubmit()">
+  
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Player Name</mat-label>
+              <mat-icon matPrefix>person</mat-icon>
+              <input matInput formControlName="name" placeholder="e.g. Cristiano Ronaldo">
+              <mat-error *ngIf="footballerForm.get('name')?.invalid">{{ getErrorMessage('name') }}</mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div class="form-row two-columns">
+            <mat-form-field appearance="outline">
+              <mat-label>Age</mat-label>
+              <mat-icon matPrefix>calendar_today</mat-icon>
+              <input matInput type="number" formControlName="age" placeholder="e.g. 25">
+              <mat-error *ngIf="footballerForm.get('age')?.invalid">{{ getErrorMessage('age') }}</mat-error>
+            </mat-form-field>
+  
+            <div class="position-retired-group">
+              <mat-form-field appearance="outline" class="position-field">
+                <mat-label>Position</mat-label>
+                <mat-icon matPrefix>sports</mat-icon>
+                <mat-select formControlName="position">
+                  <mat-option *ngFor="let position of positions" [value]="position">{{ position }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="footballerForm.get('position')?.invalid">Position is required</mat-error>
+              </mat-form-field>
+  
+              <mat-checkbox formControlName="retired" class="retired-checkbox">Retired</mat-checkbox>
+            </div>
+          </div>
+  
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Team</mat-label>
+              <mat-icon matPrefix>shield</mat-icon>
+              <input matInput formControlName="team" placeholder="e.g. Manchester United">
+              <mat-error *ngIf="footballerForm.get('team')?.invalid">{{ getErrorMessage('team') }}</mat-error>
+            </mat-form-field>
+          </div>
+  
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Nationality (Optional)</mat-label>
+              <mat-icon matPrefix>flag</mat-icon>
+              <input matInput formControlName="nationality" placeholder="e.g. Portugal">
+            </mat-form-field>
+          </div>
+  
+          <div class="button-row">
+            <button mat-raised-button type="button" routerLink="/database" class="cancel-btn">
+              <mat-icon>close</mat-icon> Cancel
+            </button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!footballerForm.valid" class="submit-btn">
+              <mat-icon>check</mat-icon> Update Player
+            </button>
+          </div>
+  
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>  
